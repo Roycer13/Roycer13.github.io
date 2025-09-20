@@ -6,6 +6,9 @@ var lyrics = document.querySelector("#lyrics");
 
 var lyricsData = [
   { text: "Escucha la canción", time: 3 },
+  { text: "Puede que no te responda rápido", time: 6 },
+  { text: "Pero te tengo presente.", time: 9 },
+
   { text: "Querida", time: 19 },
   { text: "Cada momento de mi vida", time: 22 },
   { text: "Yo pienso en ti más cada día", time: 29 },
