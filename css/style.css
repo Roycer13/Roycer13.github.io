@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
+
 *{
-    font-family: 'Poppins',cursive;
+    font-family: 'Poppins', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-    color: azure;
-    width: 100%;
-    height: 82vh;
+
+body {
+    background: linear-gradient(135deg, #2e41ad 0%, #922ecc 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
-    /* padding-top: -30; */
+    min-height: 100vh;
+    margin: 0;
 }
 
 .botones{
@@ -19,79 +22,80 @@ body{
     border-radius: 80px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .botones a{
-    background-color: #0a2be9;
-    padding: 9px;
+    background-color: #ff8e9b; /* Tono cálido que combina con el fondo */
+    padding: 12px 25px;
     border-radius: 80px;
-    -webkit-border-radius: 80px;
-    -moz-border-radius: 80px;
-    -ms-border-radius: 80px;
-    -o-border-radius: 80px;
-
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff !important;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 142, 155, 0.4);
 }
 
-.botones a:focus{
-    background-color: rgb(50, 194, 194);
+.botones a:focus, .botones a:hover{
+    background-color: #7578ff;
 }
 
-.greetings{
-    font-size: 7rem;
+.greetings {
+    font-size: 5rem;
     font-weight: 900;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
-.greetings > span{
-    animation: glow 2.5s ease-in-out infinite;
+
+.greetings span {
+    opacity: 0; /* Invisibles al inicio */
+    transform: translateY(20px);
+    transition: opacity 0.5s ease;
+    /* Color base tenue */
+    text-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
-@keyframes glow{
-    0%, 100%{
-        color: #fff;
-        text-shadow: 0 0 12px #39c6d6, 0 0 50px #39c6d6, 0 0 100px #39c6d6;
+
+
+/* Animación de entrada */
+@keyframes lightUp {
+    0%, 100% { 
+        text-shadow: 0 0 0px #fff; 
+        transform: scale(1);
     }
-    10%, 90%{
-        color: #111;
-        text-shadow: none;
+    50% { 
+        text-shadow: 0 0 20px #fff, 0 0 40px currentColor; 
+        transform: scale(1.15); 
     }
 }
-.greetings > span:nth-child(2){
-    animation-delay: .2s ;
-}
-.greetings > span:nth-child(3){
-    animation-delay: .4s ;
-}
-.greetings > span:nth-child(4){
-    animation-delay: .6s;
-}
-.greetings > span:nth-child(5){
-    animation-delay: .8s;
-}
-.greetings > span:nth-child(6){
-    animation-delay: 1s;
+
+.iluminar {
+    animation: lightUp 1s ease-in-out infinite;
 }
 
 .description{
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    color: #bdbdbd;
+    font-weight: 500;
 }
 
-.button a{
-    text-decoration: none;
-    font-size: 1rem;
-    color: #111;
+/* Estilos del pie de página */
+footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1.1rem;
+    color: #cacaca;
+    font-style: italic;
+    font-weight: 500;
 }
 
-@media screen and (max-width:574px){
+@media screen and (max-width: 768px){
     .greetings{
-        display: block;
-        font-size: 4rem;
-        font-weight: 800;
-        text-align: center;
+        font-size: 3rem;
     }
     .description{
-        font-size: 2rem;
-    }
-    
-    .button a{
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 }
