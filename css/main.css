@@ -10,52 +10,127 @@
   --dark-color: #000;
 }
 
-body {
+.carousel {
+    position: relative;
+    width: 500px; 
+    height: 500px;
+    margin: 20px auto;
+    overflow: hidden; /* Esto es vital: corta todo lo que se salga */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    /* Añadimos esto para evitar que el carrusel se desplace */
+    flex-shrink: 0; 
+}
+
+.carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel img.active {
+    opacity: 1;
+}
+
+@keyframes zoomEffect {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 768px) {
+
+  .carousel {
+    height: 220px;
+  }
+.carousel {
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  animation: slide 15s infinite;
+}
+
+.carousel img {
+  min-width: 100%;
+}
+
+@keyframes slide {
+  
+
+  0% {
+    transform: translateX(0%);
+  }
+
+  30% {
+    transform: translateX(0%);
+  }
+
+  35% {
+    transform: translateX(-100%);
+  }
+
+  65% {
+    transform: translateX(-100%);
+  }
+
+  70% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(-200%);
+  }
+}
+}
+
+body {
   min-height: 100vh;
   background-color: var(--dark-color);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   perspective: 1000px;
+  position: relative;
 }
 
 #lyrics {
   font-size: 28px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: rgb(221, 184, 16);
+  color: white;
   position: absolute;
-  top: 75%; /* Lo coloca en la parte superior */
-  left: 50%; /* Centrado horizontal */
-  transform: translateX(-50%); /* Ajusta el centrado */
+  margin-bottom: 20%;
   z-index: 1;
   font-weight: bold;
-  letter-spacing: 6px;
-  text-align: center;
-  -webkit-text-stroke: 1px #ffffff; /* Borde blanco */
+  letter-spacing: 4px;
 }
-
 @media only screen and (max-width: 600px) {
   /* Estilos específicos para dispositivos con un ancho máximo de 600px */
   #lyrics {
-    font-size: 14px; /* Reduce el tamaño del texto para dispositivos más pequeños */
-    top: 70%; /* Más espacio para móviles */
-    letter-spacing: 3px;
-    -webkit-text-stroke: 0.5px #ffffff; /* Borde más delgado en pantallas pequeñas */
+      font-size: 14px; /* Reduce el tamaño del texto para dispositivos más pequeños */
+      margin-bottom: 530px;
+      letter-spacing: 3px;
   }
-}
 
+}
 .titulo {
-  margin-bottom: 180px;
-  font-family: "Arial Narrow", Arial, sans-serif;
-  top: 5%;
-  color: #14757a;
-  position: absolute;
-  font-weight: bold;
-  letter-spacing: 7px;
-  opacity: 1;
-  animation: fadeIn 3s ease-in-out forwards;
+  position: relative;
+  margin-top: 30px;
   text-align: center;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  color: yellow;
+  font-weight: bold;
+  letter-spacing: 5px;
+  opacity: 0;
+  animation: fadeIn 3s ease-in-out forwards;
+  z-index: 5;
+  padding: 5px;
 }
 @keyframes fadeIn {
   from {
@@ -110,10 +185,12 @@ body {
 }
 
 .flowers {
-  position: relative;
-  transform: scale(0.9);
-  /*margin-bottom: 100px;
-  */
+  position: fixed;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  z-index: 5;
+  pointer-events: none;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1610,10 +1687,6 @@ body {
     transform: scale(0);
   }
 }
-.container * {
-  -webkit-animation-play-state: paused !important;
-  animation-play-state: paused !important;
-} /*# sourceMappingURL=main.css.map */
 
 
 /* Reset de estilos básicos */
